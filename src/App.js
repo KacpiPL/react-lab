@@ -13,8 +13,8 @@ function App() {
   }
 
   function handleChange(event) {
-    setTitle(event.target.value)
-}
+    setTitle(event.target.value);
+  }
 
   return (
     <div>
@@ -22,6 +22,9 @@ function App() {
       <h2>My favourite movie for today is {title}</h2>
       {title.length > 0 && <div>{message}</div>}
       <input type="text" value={title} onChange={handleChange}/>
+      <button onClick={() => alert(title)}>
+          Show movie title
+      </button>
     </div>
   )
 }
