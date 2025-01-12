@@ -1,15 +1,27 @@
+import { useState } from "react";
+
 function App() {
-  let title = 'Wall-E'
+  const [title, setTitle] = useState('Wall-E')
+
+  let message;
+  if (title.length < 5) {
+      message = "Tutuł jest za krótki. Nagrywają takie filmy?";
+  } else if (title.length < 15) {
+      message = "Tytuł jest ekstra, w sam raz na plakat przed kinem!";
+  } else {
+      message = "Tytuł jest za długi, nikt tego nie zapamięta.";
+  }
 
   function handleChange(event) {
-    console.log(event.target.value);
+    setTitle(event.target.value)
 }
 
   return (
     <div>
       <h1>My favourite movies for today</h1>
       <h2>My favourite movie for today is {title}</h2>
-      <input type="text" onChange={handleChange}/>
+      {title.length > 0 && <div>{message}</div>}
+      <input type="text" value={title} onChange={handleChange}/>
     </div>
   )
 }
